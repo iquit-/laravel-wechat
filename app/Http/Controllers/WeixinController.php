@@ -21,6 +21,8 @@ class WeixinController extends Controller
             switch ($message->Event) {
 				case 'subscribe':
 					return self::getSubscribeResp();
+				case 'location':
+					return self::getSubscribeResp();
 				default:
 					break;
 			}
@@ -48,7 +50,7 @@ class WeixinController extends Controller
     }
 	
 	public function getSubscribeResp() {
-		return "欢迎关注！我们将会持续推送房价信息与变化趋势！嘻嘻！";
+		return "欢迎关注 IMS1101-house_price_analysis！";
 	}
 
 	public function getTextResp() {
