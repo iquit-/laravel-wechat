@@ -21,8 +21,8 @@ class WeixinController extends Controller
             switch ($message->Event) {
 				case 'subscribe':
 					return self::getSubscribeResp();
-				case 'location':
-					return self::getSubscribeResp();
+				case 'LOCATION':
+					return self::getLocationResp();
 				default:
 					break;
 			}
