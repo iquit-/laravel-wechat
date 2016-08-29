@@ -82,6 +82,8 @@ class WeixinController extends Controller
 		$html = file_get_contents($url);
 		$obj=json_decode($html);
 		$city =  $obj->result->addressComponent->city;
-		return $city . "地理位置纬度：" . $message->Latitude . "，地理位置经度：" . $message->Longitude . "，地理位置精度：" . $message->Precision . $html;
+		$district =  $obj->result->addressComponent->district;
+		//return $city . "地理位置纬度：" . $message->Latitude . "，地理位置经度：" . $message->Longitude . "，地理位置精度：" . $message->Precision . $html;
+		return "您所在的行政区是" . $city . $district;
 	}
 }
