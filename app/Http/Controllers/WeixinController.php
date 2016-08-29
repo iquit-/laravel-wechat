@@ -78,7 +78,7 @@ class WeixinController extends Controller
 	}
 	
 	public function getEventLocationResp($message) {
-		$url = "http://api.map.baidu.com/geocoder/v2/?ak=16a13b37a67c9102c3d825b5dc1674f9&location=".$message->Latitude.",".$message->Longitude."&output=json&pois=1"
+		$url = "http://api.map.baidu.com/geocoder/v2/?ak=16a13b37a67c9102c3d825b5dc1674f9&location=".$message->Latitude.",".$message->Longitude."&output=json&pois=1";
 		$html = file_get_contents($url);
 		return "地理位置纬度：" . $message->Latitude . "，地理位置经度：" . $message->Longitude . "，地理位置精度：" . $message->Precision . $html;
 	}
