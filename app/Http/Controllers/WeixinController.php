@@ -22,7 +22,7 @@ class WeixinController extends Controller
 				case 'subscribe':
 					return self::getSubscribeResp();
 				case 'LOCATION':
-					return self::getLocationResp();
+					return self::getEventLocationResp($message);
 				default:
 					break;
 			}
@@ -75,5 +75,9 @@ class WeixinController extends Controller
 	
 	public function getLinkResp() {
 		return "这是链接！";
+	}
+	
+	public function getEventLocationResp($message) {
+		return "地理位置纬度：" . $message->Latitude . "，地理位置经度：" . $message->Longitude . "，地理位置精度：" . $message->Precision;
 	}
 }
