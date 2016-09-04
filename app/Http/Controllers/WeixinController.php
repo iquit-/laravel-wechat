@@ -12,6 +12,8 @@ use EasyWeChat\Foundation\Application;
 
 class WeixinController extends Controller
 {
+	public static $baiduMapApiUrl = "http://api.map.baidu.com/geocoder/v2/?output=json&pois=1&ak=16a13b37a67c9102c3d825b5dc1674f9&location=";
+	
     public function serve()
     {
         Log::info('request arrived.'); # 注意：Log 为 Laravel 组件，所以它记的日志去 Laravel 日志看，而不是 EasyWeChat 日志
@@ -78,7 +80,7 @@ class WeixinController extends Controller
 	}
 	
 	public function getEventLocationResp($message) {
-		$url = "http://api.map.baidu.com/geocoder/v2/?ak=16a13b37a67c9102c3d825b5dc1674f9&location=".$message->Latitude.",".$message->Longitude."&output=json&pois=1";
+		$url = $baiduMapApiUrl . $message->Latitude . "," . $message->Longitude;
 		$html = file_get_contents($url);
 		$obj=json_decode($html);
 		$city =  $obj->result->addressComponent->city;
