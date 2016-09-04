@@ -80,7 +80,7 @@ class WeixinController extends Controller
 	}
 	
 	public function getEventLocationResp($message) {
-		$url = $baiduMapApiUrl . $message->Latitude . "," . $message->Longitude;
+		$url = self::$baiduMapApiUrl . $message->Latitude . "," . $message->Longitude;
 		return $url;
 		$html = file_get_contents($url);
 		$obj=json_decode($html);
