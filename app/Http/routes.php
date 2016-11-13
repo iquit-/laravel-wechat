@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::any('/wechat', 'WeixinController@serve');
 
 Route::any('/gameRoom', 'GameRoomController@serve');
+
+Route::any('/oauthCallback', 'GameRoomController@oauthCallback');
