@@ -35,9 +35,7 @@ class GameRoomController extends Controller
 				'callback' => '/oauthCallback',
 			],
 		];
-		
 		$app = new Application($config);
-		
 		$oauth = $app->oauth;
 		// 获取 OAuth 授权结果用户信息
 		$user = $oauth->user();
