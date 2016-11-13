@@ -12,6 +12,22 @@ class GameRoomController extends Controller
 {
 	public function serve()
 	{
+		$config = [
+			'debug'     => true,
+			'app_id'    => 'wxcb86c424bde09527',
+			'secret'    => '7b254b38b5a7c1d75288425e871bfb95',
+			'token'     => 'weixin',
+			'log' => [
+				'level' => 'debug',
+				'file'  => '/tmp/easywechat.log',
+			],
+			'oauth' => [
+				'scopes'   => ['snsapi_userinfo'],
+				'callback' => '/oauthCallback',
+			],
+		];
+		$app = new Application($config);
+		$oauth = $app->oauth;
 		if (empty($_SESSION['wechat_user'])) {
 			$_SESSION['target_url'] = 'user/profile';
 			return $oauth->redirect();
